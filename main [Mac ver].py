@@ -1,7 +1,7 @@
 from operator import add
 import sys
 #Dim-Input from user
-row = int(input("Mata in antalet rader pa matrisen :) : "))
+row = int(input("Mata in antalet rader pa matrisen: "))
 col = int(input("Mata in antalet kolonner pa matrisen: "))
 
 #Check for invalid dimensions
