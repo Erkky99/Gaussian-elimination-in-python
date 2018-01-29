@@ -1,20 +1,19 @@
 from operator import add
 
 
-row = 3
-col = 4
+row = 4
+col = 5
 
-"""TEST
-row1 = [1, 2, 3, 4]
-row2 = [5, 6, 7, 8]
-row3 = [9, 10, 11, 12]
-"""
+row1 = [2, 65, 32, 16, 3]
+row2 = [8, 95, 2, 3, 7]
+row3 = [56, 87, 0, 0, 5]
+row4 = [9, 12, 23, 32, 2]
 
-row1 = [0, 0, 1, 4]
+"""row1 = [0, 0, 1, 4]
 row2 = [2, 0, 3, 16]
-row3 = [8, -9, 0, 4]
+row3 = [8, -9, 0, 4]"""
 
-matrix = [row1, row2, row3]
+matrix = [row1, row2, row3, row4]
 
 #k = -1*(row2[0]/row1[0])
 
@@ -36,7 +35,7 @@ j = 0
 while j != row:
     if matrix[j][j] == 0:
         print("Zero detected! Row-swap")
-        matrix[j], matrix[j+1] = matrix[j+1], matrix[j]
+        matrix[j-1], matrix[j] = matrix[j], matrix[j-1]
     else:
         print("No zero detected")
         j+=1
