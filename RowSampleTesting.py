@@ -1,20 +1,25 @@
 from operator import add
 
 
-row = 4
-col = 5
+row = 3
+col = 4
 
-row1 = [2, 65, 32, 16, 3]
-row2 = [8, 95, 2, 3, 7]
-row3 = [56, 87, 0, 0, 5]
-row4 = [9, 12, 23, 32, 2]
+"""row1 = [2.0, 65.0, 32.0, 16.0, 3.0]
+row2 = [8.0, 95.0, 2.0, 3.0, 7.0]
+row3 = [56.0, 87.0, 0.0, 0.0, 5.0]
+row4 = [9.0, 12.0, 23.0, 32.0, 2.0]"""
 
-"""row1 = [0, 0, 1, 4]
-row2 = [2, 0, 3, 16]
-row3 = [8, -9, 0, 4]"""
+row1 = [0.0, 0.0, 1.0, 4.0]
+row2 = [2.0, 0.0, 3.0, 16.0]
+row3 = [8.0, -9.0, 0.0, 4.0]
 
-matrix = [row1, row2, row3, row4]
+matrix = [row1, row2, row3]
 
+
+"""l=0
+for l in matrix[l]:
+    map(float, l)
+"""
 #k = -1*(row2[0]/row1[0])
 
 #[IMP]k = -1*(matrix[1][0]/matrix[0][0])
@@ -42,31 +47,55 @@ while j != row:
     
 
 """Gaussing downwards"""
-t = 0 #Counter for while loop
-j = 1
-l = 0
-for x in range(0, row-1):
-    while t != row-1:
-        print(matrix)
-        k = -1*(matrix[j][l]/matrix[l][l]) #Defintion of k that is needed for operation 3
-        print(k)
-        prevRowTemp = [i * k for i in matrix[l]] #The list of numbers that are going to be added to said row
-        print(prevRowTemp)
-        matrix[j] = list(map(add, matrix[j], prevRowTemp)) #(Old Row) - prevRowTemp = (new row)
-        print(matrix[j])
 
-        t+=1
-        j+=1
-        print("t = {}, j = {}".format(t, j))
+j = 1
+for x in range(0, row): #Col.s
+    for t in range(j, row): #Rows
+        print("t = {}, x = {}".format(t, x))
+        print(matrix)
+        k = -1*(matrix[t][x]/matrix[x][x]) #Defintion of k that is needed for operation 3
+        print("Matrix[t]: {}".format(matrix[t]))
+        print(k)
+        prevRowTemp = [i * k for i in matrix[x]] #The list of numbers that are going to be added to said row
+        print(prevRowTemp)
+        matrix[t] = list(map(add, matrix[t], prevRowTemp)) #(Old Row) - prevRowTemp = (new row)
+        print(matrix[t])
+
+        print("t = {}, x = {}".format(t, x))
         print("-------------")
-    t-=1
-    j-=1
-    l+=1
+    j+=1
+       
+       
+print(j)
 
 print("Slutmatris (Ner): {}".format(matrix))
 
 """Guassing upwards"""
-t = row-1
+
+#row = 4
+#col = 5
+
+j = row - 2
+print("j = {}".format(j))
+
+for x in range(row-1, 0, -1):
+    for t in range(j, -1, -1):
+        print("t = {}, x = {}".format(t, x))
+        print(matrix)
+        k = -1*(matrix[t][x]/matrix[x][x]) #Defintion of k that is needed for operation 3
+        print("Matrix[t]: {}".format(matrix[t]))
+        print(k)
+        prevRowTemp = [i * k for i in matrix[x]] #The list of numbers that are going to be added to said row
+        print(prevRowTemp)
+        matrix[t] = list(map(add, matrix[t], prevRowTemp)) #(Old Row) - prevRowTemp = (new row)
+        print(matrix[t])
+
+        print("t = {}, x = {}".format(t, x))
+        print("-------------")
+    j-=1
+    print("Loop done, j = {}".format(j))
+
+"""t = row-1
 j = row-2
 l = row-1
 for x in range(row-1, 0, -1):
@@ -87,6 +116,7 @@ for x in range(row-1, 0, -1):
     t+=1
     j+=1
     l-=1
+"""
 
 print("Slutmatris (Upp): {}".format(matrix))
 
@@ -106,10 +136,10 @@ for x in range(0, row):
     
 print("Slutmatris (FT): {}".format(matrix))
 
-for x in range(0, row):
-    map(int, matrix[x])
+#for x in range(0, row):
+    #map(int, matrix[x])
 
-print("Den radkanoniska matrisen är:")
+print("Den radkanoniska matrisen ar:")
 for x in range(0, row):
     print(matrix[x])
 
