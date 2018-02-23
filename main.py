@@ -1,12 +1,12 @@
 from operator import add
 import sys
 #Dim-Input from user
-row = int(input("Mata in antalet rader på matrisen: "))
-col = int(input("Mata in antalet kolonner på matrisen: "))
+row = int(input("Enter the number of rows to the matrix: "))
+col = int(input("Enter the number of columns to the matrix: "))
 
 #Check for invalid dimensions
 if row > col:
-    sys.exit("ERROR: Invalida dimensioner")
+    sys.exit("ERROR: Invalid dimension")
 else:
     print("Valid dimension:")
 
@@ -17,7 +17,7 @@ c = 1
 for x in range(0, row):
     tempRowList = []
     for y in range(0, col):
-        d = int(input("Ange värde för d({}, {}): ".format(r,c)))
+        d = float(input("Enter a value for d({}, {}): ".format(r,c)))
         tempRowList.append(d)
         c+=1
     matrix.append(tempRowList)
@@ -35,36 +35,23 @@ while j != row:
         j+=1
 
 #"Gaussing" downwards
-t = 0
 j = 1
-l = 0
-for x in range(0, row-1):
-    while t != row-1:
-        k = -1*(matrix[j][l]/matrix[l][l])
-        prevRowTemp = [i * k for i in matrix[l]]
-        matrix[j] = list(map(add, matrix[j], prevRowTemp))
-
-        t+=1
-        j+=1
-    t-=1
-    j-=1
-    l+=1
+for x in range(0, row):
+    for t in range(j, row):
+        k = -1*(matrix[t][x]/matrix[x][x])
+        prevRowTemp = [i * k for i in matrix[x]]
+        matrix[t] = list(map(add, matrix[t], prevRowTemp))
+    j+=1
 
 #"Gaussing" upwards
-t = row-1
-j = row-2
-l = row-1
+j = row - 2
 for x in range(row-1, 0, -1):
-    while t != 0:
-        k = -1*(matrix[j][l]/matrix[l][l])
-        prevRowTemp = [i * k for i in matrix[l]]
-        matrix[j] = list(map(add, matrix[j], prevRowTemp))
+    for t in range(j, -1, -1):
+        k = -1*(matrix[t][x]/matrix[x][x])
+        prevRowTemp = [i * k for i in matrix[x]]
+        matrix[t] = list(map(add, matrix[t], prevRowTemp))
+    j-=1
 
-        j-=1
-        t-=1
-    t+=1
-    j+=1
-    l-=1
 
 #Fine tuning. Making sure that the pivot elements are equal to one
 j = 0
@@ -75,6 +62,6 @@ for x in range(0, row):
 
 map(int, matrix)
 
-print("Den radkanoniska matrisen är:")
+print("The matrix' reduced row echelon form is:")
 for x in range(0, row):
     print(matrix[x])
