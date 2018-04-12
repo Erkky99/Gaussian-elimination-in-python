@@ -54,11 +54,9 @@ for x in range(row-1, 0, -1):
 
 
 #Fine tuning. Making sure that the pivot elements are equal to one
-j = 0
 for x in range(0, row):
-    if matrix[j][j] != 1:    
-        matrix[j][:] = [i/matrix[j][j] for i in matrix[j]]
-    j+=1    
+    if matrix[x][x] != 1:    
+        matrix[x][:] = [i/matrix[x][x] for i in matrix[x]]    
 
 map(int, matrix)
 
