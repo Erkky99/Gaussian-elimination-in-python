@@ -35,13 +35,11 @@ while j != row:
         j+=1
 
 #"Gaussing" downwards
-j = 1
 for x in range(0, row):
-    for t in range(j, row):
+    for t in range(x+1, row):
         k = -1*(matrix[t][x]/matrix[x][x])
         prevRowTemp = [i * k for i in matrix[x]]
         matrix[t] = list(map(add, matrix[t], prevRowTemp))
-    j+=1
 
 #"Gaussing" upwards
 j = row - 2
