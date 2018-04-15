@@ -48,7 +48,6 @@ for x in range(row-1, 0, -1):
         matrix[t] = list(map(add, matrix[t], prevRowTemp))
     j-=1
 
-
 #Fine tuning. Making sure that the pivot elements are equal to one
 for x in range(0, row):
     if matrix[x][x] != 1:    
