@@ -24,8 +24,6 @@ for x in range(0, row):
     r+=1
     c = 1
 
-oMatrix = list(matrix)
-
 #Checking for Zeros; if there is a zero where there should be piv-element, it performs a row-swap
 j = 0
 while j != row:
